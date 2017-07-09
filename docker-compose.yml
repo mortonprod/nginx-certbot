@@ -1,0 +1,18 @@
+version: '2' 
+services:
+  nginx:
+    build: nginx-image
+    mem_limit: 2g
+    cpu_shares: 256
+    restart: always
+    ports: 
+      - "80:80"
+      - "443:443"
+    networks:
+      - boutique
+networks:
+  boutique:
+    external: 
+      name: boutiquebackendv2_default
+
+
