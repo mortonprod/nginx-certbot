@@ -6,6 +6,7 @@ services:
     #  - letsencrypt
     environment:
       - MY_DOMAIN_NAME=mortonprod.co.uk
+      - MY_DOMAIN_NAME2=alexandermorton.co.uk
     mem_limit: 2g
     cpu_shares: 256
     # restart: always
@@ -17,9 +18,10 @@ services:
     networks:
       - boutique
       - encrypt
+      - portfolio
   letsencrypt:
     image: quay.io/letsencrypt/letsencrypt:latest
-    command:  bash -c "sleep 6 && certbot certonly  --standalone -d mortonprod.co.uk --text --agree-tos --email mortonprod@gmail.com --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01"
+    command:  bash -c "sleep 6 && certbot certonly --test-cert  --standalone -d mortonprod.co.uk --text --agree-tos --email mortonprod@gmail.com --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01 &&  sleep 6 && certbot certonly --test-cert  --standalone -d alexandermorton.co.uk --text --agree-tos --email mortonprod@gmail.com --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01"
     entrypoint: ""
     volumes:
       - /etc/letsencrypt
@@ -37,5 +39,9 @@ networks:
   boutique:
     external: 
       name: boutiquebackend_default
+  portfolio:
+    external: 
+      name: portfolionodebackend_default
+
 
 
