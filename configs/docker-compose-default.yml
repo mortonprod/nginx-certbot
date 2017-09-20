@@ -1,0 +1,39 @@
+version: '2' 
+services:
+  nginx:
+    build: nginx-image
+    #links:
+    #  - letsencrypt
+    environment:
+      - MY_DOMAIN_NAME=mortonprod.co.uk
+      - MY_DOMAIN_NAME2=alexandermorton.co.uk
+    mem_limit: 2g
+    cpu_shares: 256
+    # restart: always
+    ports: 
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - letsencrypt
+    #INSERTNGINXNETWORK
+  letsencrypt:
+    image: quay.io/letsencrypt/letsencrypt:latest
+    #INSERTCERT
+    entrypoint: ""
+    volumes:
+      - /etc/letsencrypt
+      - /var/lib/letsencrypt
+    ports:
+      - "80"
+      - "443"
+    environment:
+      - TERM=xterm
+    networks:
+      - encrypt
+  
+networks:
+  encrypt:
+  #INSERTDOCKERNETWORK
+
+
+
