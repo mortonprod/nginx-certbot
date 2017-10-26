@@ -68,7 +68,7 @@ do
  echo $var1
  sed -i  "/$DOCKERNETWORK/ a \ \ \ \ \ \ name:$var1" $OUTPUTFILE
  sed -i  "/$DOCKERNETWORK/ a \ \ \ \ external:" $OUTPUTFILE
- sed -i  "/$DOCKERNETWORK/ a \ \ $var1:" $OUTPUTFILE
+ sed -i  "/$DOCKERNETWORK/ a \ $var1:" $OUTPUTFILE
 done
 
 
@@ -81,7 +81,6 @@ done
 sed -i "/$NETWORK/ a \ \ \ \ networks:" $OUTPUTFILE
 
 
-#Add networks to docker file nginx networks. 
 CERTSTRING=()
 for EL in $NETWORKSTRING
 do
