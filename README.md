@@ -3,14 +3,14 @@
 Based on repository you can find here
 [Based on](https://bitbucket.org/automationlogic/le-docker-compose/overview)
 
-1. Add networks so app and nginx compose fill separate completely separated.
-2 Use DNS host name in nginx so we can stop and start containers to different IP addresses
+* Add networks so app and nginx compose fill separate completely separated.
+* Use DNS host name in nginx so we can stop and start containers to different IP addresses
 
 
 ## Running
-1.Must start app and check component lives in app__default network.
+* Must start app and check component lives in app__default network.
 
-2. Build and run nginx-certbox
+* Build and run nginx-certbox
 ```
 docker-compose build 
 docker-compose up
