@@ -7,7 +7,7 @@ Based on repository you can find here
 2 Use DNS host name in nginx so we can stop and start containers to different IP addresses
 
 
-##Running
+## Running
 1.Must start app and check component lives in app__default network.
 
 2. Build and run nginx-certbox
